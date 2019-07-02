@@ -3,10 +3,35 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node ./src/app/start",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "start": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js",
+      "quiet": false
+    }
+  },
   "dependencies": {
     "@playlyfe/gql": "^2.6.1",
     "express": "^4.17.1",
     "express-graphql": "^0.8.0",
-    "graphql": "^14.4.1"
+    "graphql": "^14.4.1",
+    "graphql-import": "^0.7.1",
+    "graphql-import-node": "^0.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "babel-plugin-root-import": "^6.2.0",
+    "dotenv": "^8.0.0",
+    "npm-watch": "^0.6.0"
   }
 }
