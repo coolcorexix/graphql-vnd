@@ -1,6 +1,15 @@
 {
   "plugins": [
     [
+      "module-name-mapper",
+      {
+        "moduleNameMapper": {
+          "^mapper-gql/(.*)": "<pkgDir>/src/api/graphql/$1",
+          "^mapper-api/(.*)": "<pkgDir>/src/api/$1"
+        }
+      }
+    ],
+    [
       "@babel/plugin-proposal-class-properties",
       {
         "loose": true,
@@ -10,7 +19,8 @@
       "babel-plugin-root-import", {
         "rootPathSuffix": "src/"
       }
-    ]
+    ],
+    "@babel/plugin-proposal-object-rest-spread"
   ],
   "presets": [
     "@babel/preset-env"
