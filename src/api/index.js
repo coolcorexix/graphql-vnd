@@ -2,7 +2,6 @@ import Express from 'express';
 import bodyParser from 'body-parser';
 import GraphQLEndpoint from './graphql';
 
-
 const app = Express();
 
 // parse incoming request with JSON body
