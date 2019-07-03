@@ -32,9 +32,12 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
+    "babel-eslint": "^10.0.2",
     "babel-plugin-module-name-mapper": "^1.2.0",
     "babel-plugin-root-import": "^6.2.0",
     "dotenv": "^8.0.0",
+    "eslint": "^6.0.1",
+    "eslint-config-google": "^0.13.0",
     "npm-watch": "^0.6.0"
   }
 }

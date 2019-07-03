@@ -14,7 +14,7 @@ export default {
         name: {
             name: 'name',
             type: GraphQLString,
-        }
+        },
     },
     resolve: async (herb, args) => HerbModel.find(args),
 }

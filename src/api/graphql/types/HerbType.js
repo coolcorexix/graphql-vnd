@@ -20,6 +20,9 @@ export default new GraphQLObjectType({
         flavors: {
             type: new GraphQLList(GraphQLString),
             resolve: (herb) => herb.flavors,
+        },
+        tags: {
+            type: new GraphQLList(GraphQLString),
         }
     })
 })

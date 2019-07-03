@@ -4,7 +4,7 @@ import {
     GraphQLNonNull,
     GraphQLList,
   } from 'graphql';
-import { HerbType } from '../types';
+import { HerbType, EffectType } from '../types';
 import { HerbModel } from '../../models';
 
 const createHerb = {
@@ -18,13 +18,26 @@ const createHerb = {
             name: 'flavors',
             type: new GraphQLNonNull(new GraphQLList(GraphQLString)),
         },
+        effects: {
+            name: 'effects',
+            type: new GraphQLList(EffectType),
+        },
+        description: {
+            name: 'description',
+            type: GraphQLString,
+        },
+        available: {
+            name: 'available',
+            type: new GraphQLNonNull(GraphQLInt),
+        }
     },
-    resolve: (value, { name, flavors }) => {
-        console.log(value);
-        console.log(name, flavors);
+    resolve: (value, { name, flavors, effects, description, available }) => {
         HerbModel.create({
             name,
             flavors,
+            available,
+            effects,
+            description,
         })
     },
 }
