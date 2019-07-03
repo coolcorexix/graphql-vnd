@@ -33,7 +33,7 @@ const RootMutation = new GraphQLObjectType({
 
 const schema = new GraphQLSchema({
         query: RootQuery,
-        mutations: RootMutation,
+        mutation: RootMutation,
     });
 
 export default graphqlHTTP({

@@ -19,10 +19,14 @@ const createHerb = {
             type: new GraphQLNonNull(new GraphQLList(GraphQLString)),
         },
     },
-    resolve: (value, { name, flavors }) => HerbModel.create({
-        name,
-        flavors,
-    }),
+    resolve: (value, { name, flavors }) => {
+        console.log(value);
+        console.log(name, flavors);
+        HerbModel.create({
+            name,
+            flavors,
+        })
+    },
 }
 
 export default {
