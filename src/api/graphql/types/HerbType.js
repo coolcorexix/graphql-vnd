@@ -1,9 +1,9 @@
 import {
     GraphQLObjectType,
-    GraphQLInt,
     GraphQLString,
     GraphQLID,
     GraphQLList,
+    GraphQLInt,
 } from 'graphql';
 
 export default new GraphQLObjectType({
@@ -23,6 +23,9 @@ export default new GraphQLObjectType({
         },
         tags: {
             type: new GraphQLList(GraphQLString),
-        }
-    })
-})
+        },
+        status: {
+            type: GraphQLInt,
+        },
+    }),
+});

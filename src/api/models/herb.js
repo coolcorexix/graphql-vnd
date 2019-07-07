@@ -1,4 +1,4 @@
-import { createModel, createSchema, ObjectIdType } from '~/utils/mongoDb';
+import {createModel, createSchema} from '~/utils/mongoDb';
 
 const StrainSchema = createSchema({
     indica: Number,
@@ -9,10 +9,10 @@ const StrainSchema = createSchema({
 const EffectSchema = createSchema({
     name: String,
     value: Number,
-}) 
+});
 
 export default createModel('Herb', {
-    _id: ObjectIdType,
+    // _id: ObjectIdType,
     name: String,
     rating: {
         type: Number,

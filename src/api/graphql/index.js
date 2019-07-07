@@ -1,5 +1,4 @@
-import { 
-    buildSchema,
+import {
     GraphQLSchema,
     GraphQLObjectType,
 } from 'graphql';
@@ -13,30 +12,36 @@ import {
 
 const RootQuery = new GraphQLObjectType({
     name: 'rootQuery',
-    description: 'This is the root query which holds all possible READ entrypoints for the GraphQL API',
+    description: 'This is the root query which' +
+    ' holds all possible READ entrypoints for the GraphQL API',
     fields: () => ({
         herb: HerbQuery,
     }),
-})
+});
 
 const {
     createHerb,
+    deleteHerb,
+    updateHerb,
 } = HerbMutation;
 
 const RootMutation = new GraphQLObjectType({
     name: 'rootMutation',
-    description: 'This is the root query which holds all possible WRITE entrypoints for the GraphQL API',
+    description: 'This is the root query which' +
+    ' holds all possible WRITE entrypoints for the GraphQL API',
     fields: () => ({
         createHerb,
+        deleteHerb,
+        updateHerb,
     }),
-})
+});
 
 const schema = new GraphQLSchema({
-        query: RootQuery,
-        mutation: RootMutation,
-    });
+    query: RootQuery,
+    mutation: RootMutation,
+});
 
 export default graphqlHTTP({
     schema,
     graphiql: true,
-})
+});
