@@ -1,1 +1,1 @@
-export { default as mongoose } from './noSql';
+export {default as mongoose, initNoSqlConnection} from './noSql';

@@ -1,4 +1,4 @@
-require("@babel/polyfill");
+require('@babel/polyfill');
 
 require('@babel/register')({
     presets: ['@babel/preset-env'],
@@ -6,4 +6,4 @@ require('@babel/register')({
 
 require('dotenv').config();
 
-module.exports = require('../api');
+module.exports = require('./index');
