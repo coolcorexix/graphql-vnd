@@ -1,12 +1,10 @@
 import {
     GraphQLList,
-    GraphQLInt,
-    GraphQLID,
     GraphQLString,
- } from 'graphql';
+} from 'graphql';
 
-import { HerbType } from 'mapper-gql/types';
-import { HerbModel } from 'mapper-api/models';
+import {HerbType} from 'mapper-gql/types';
+import {HerbModel} from 'mapper-api/models';
 
 export default {
     type: new GraphQLList(HerbType),
@@ -17,4 +15,4 @@ export default {
         },
     },
     resolve: async (herb, args) => HerbModel.find(args),
-}
+};

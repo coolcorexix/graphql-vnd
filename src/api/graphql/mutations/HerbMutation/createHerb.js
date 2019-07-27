@@ -7,7 +7,7 @@ import {
     GraphQLInt,
 } from 'graphql';
 import {EffectInputType} from 'mapper-gql/inputTypes';
-import {ResponseType, HerbType} from 'mapper-gql/types';
+import {ResponseType, HerbType, HerbStockStatus} from 'mapper-gql/types';
 import {HerbModel} from 'mapper-api/models';
 
 const InputType = new GraphQLInputObjectType({
@@ -27,6 +27,9 @@ const InputType = new GraphQLInputObjectType({
         },
         available: {
             type: new GraphQLNonNull(GraphQLInt),
+        },
+        stockStatus: {
+            type: new GraphQLNonNull(HerbStockStatus),
         },
     }),
 });
@@ -65,22 +68,19 @@ export default {
         },
     },
     resolve: async (value, {
-        input: {
-            name, flavors, effects,
-            description, available,
-        }}) => {
+        input,
+    }) => {
+        const {
+            name,
+        } = input;
         if ((await HerbModel.find({name})).length === 0) {
             const herb = await HerbModel.create({
-                name,
-                flavors,
-                available,
-                effects,
-                description,
+                ...input,
             });
-            console.log(herb);
             return {
                 herb,
             };
         };
+        throw new Error('This herb has already been added');
     },
 };

@@ -3,12 +3,38 @@ import {
     GraphQLString,
     GraphQLID,
     GraphQLList,
-    GraphQLInt,
+    GraphQLEnumType,
 } from 'graphql';
+
+import EffectType from './EffectType';
+
+export const HerbStockStatus = new GraphQLEnumType({
+    name: 'HerbStockStatus',
+    values: {
+        PREORDER: {
+            value: 'PREORDER',
+        },
+        INSTOCK: {
+            value: 'INSTOCK',
+        },
+    },
+});
 
 export default new GraphQLObjectType({
     name: 'Herb',
     fields: () => ({
+        available: {
+            type: GraphQLString,
+            resolve: (herb) => herb.available,
+        },
+        effects: {
+            type: new GraphQLList(EffectType),
+            resolve: (herb) => herb.effects,
+        },
+        flavors: {
+            type: new GraphQLList(GraphQLString),
+            resolve: (herb) => herb.flavors,
+        },
         id: {
             type: GraphQLID,
             resolve: (herb) => herb.id,
@@ -17,15 +43,12 @@ export default new GraphQLObjectType({
             type: GraphQLString,
             resolve: (herb) => herb.name,
         },
-        flavors: {
-            type: new GraphQLList(GraphQLString),
-            resolve: (herb) => herb.flavors,
-        },
         tags: {
             type: new GraphQLList(GraphQLString),
         },
-        status: {
-            type: GraphQLInt,
+        stockStatus: {
+            type: HerbStockStatus,
+            resolve: (herb) => herb.stockStatus,
         },
     }),
 });

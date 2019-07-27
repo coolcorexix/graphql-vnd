@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node ./src/app/start",
-    "watch": "sudo kill $(lsof -t -i:2109) | npm-watch"
+    "watch": "sudo kill $(lsof -t -i:2109) | npm-watch",
+    "kill": "sudo kill $(lsof -t -i:2109)"
   },
   "watch": {
     "start": {

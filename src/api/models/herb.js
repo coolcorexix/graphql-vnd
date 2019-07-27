@@ -1,18 +1,6 @@
-import {createModel, createSchema} from '~/utils/mongoDb';
-
-const StrainSchema = createSchema({
-    indica: Number,
-    sativa: Number,
-    ruderailis: Number,
-});
-
-const EffectSchema = createSchema({
-    name: String,
-    value: Number,
-});
+import {createModel} from '~/utils/mongoDb';
 
 export default createModel('Herb', {
-    // _id: ObjectIdType,
     name: String,
     rating: {
         type: Number,
@@ -21,11 +9,16 @@ export default createModel('Herb', {
     },
     description: String,
     review: [String],
-    strain: StrainSchema,
     available: Number,
     tag: [String],
-    // linage: [String],
     flavors: [String],
-    effects: [EffectSchema],
+    effects: [{
+        name: String,
+        value: Number,
+    }],
+    stockStatus: {
+        type: String,
+        enum: ['PREORDER', 'INSTOCK'],
+    },
 });
 
