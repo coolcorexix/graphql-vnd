@@ -15,6 +15,7 @@ module.exports = {
     'sourceType': 'module',
   },
   'rules': {
+    "new-cap": 0,
     "no-undef": 1,
     'indent': [2, 4, {
       'SwitchCase': 1
