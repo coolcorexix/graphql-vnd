@@ -1,1 +1,1 @@
-export { default as HerbModel } from './herb';
+export {default as HerbModel} from './herb';

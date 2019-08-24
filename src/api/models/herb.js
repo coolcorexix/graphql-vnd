@@ -16,6 +16,7 @@ export default createModel('Herb', {
         name: String,
         value: Number,
     }],
+    thumbnailURL: String,
     stockStatus: {
         type: String,
         enum: ['PREORDER', 'INSTOCK'],

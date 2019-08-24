@@ -27,6 +27,10 @@ export default new GraphQLObjectType({
             type: GraphQLString,
             resolve: (herb) => herb.available,
         },
+        description: {
+            type: GraphQLString,
+            resolve: (herb) => herb.description,
+        },
         effects: {
             type: new GraphQLList(EffectType),
             resolve: (herb) => herb.effects,
@@ -45,6 +49,11 @@ export default new GraphQLObjectType({
         },
         tags: {
             type: new GraphQLList(GraphQLString),
+            resolve: (herb) => herb.tags,
+        },
+        thumbnailURL: {
+            type: GraphQLString,
+            resolve: (herb) => herb.thumbnailURL,
         },
         stockStatus: {
             type: HerbStockStatus,

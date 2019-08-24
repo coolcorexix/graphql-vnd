@@ -11,7 +11,7 @@ export default (app) => {
             'DELETE, POST, GET, OPTIONS, PATCH');
         res.header('Access-Control-Allow-Headers',
             'Origin, X-Requested-With, Content-Type, Accept');
-        if (req.method === 'OPTIONS' || req.method === 'OPTIONS') {
+        if (req.method === 'OPTIONS') {
             res.sendStatus(200);
             return;
         }
