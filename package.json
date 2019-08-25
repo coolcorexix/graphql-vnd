@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node ./src/app/start",
-    "watch": "sudo kill $(lsof -t -i:2109) | npm-watch",
+    "start": "yarn kill | node ./src/app/start",
+    "watch": "npm-watch",
     "kill": "sudo kill $(lsof -t -i:2109)"
   },
   "watch": {
@@ -14,9 +14,11 @@
         "src"
       ],
       "extensions": "js",
-      "quiet": false
+      "quiet": false,
+      "delay": 500
     }
   },
+  
   "dependencies": {
     "@playlyfe/gql": "^2.6.1",
     "express": "^4.17.1",

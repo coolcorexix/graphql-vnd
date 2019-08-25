@@ -1,1 +1,1 @@
-export { default as HerbQuery } from './HerbQuery';
+export {default as HerbPaginationQuery} from './HerbPaginationQuery';

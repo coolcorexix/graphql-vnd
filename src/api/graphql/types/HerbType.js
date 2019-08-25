@@ -23,9 +23,13 @@ export const HerbStockStatus = new GraphQLEnumType({
 export default new GraphQLObjectType({
     name: 'Herb',
     fields: () => ({
-        available: {
+        id: {
+            type: GraphQLID,
+            resolve: (herb) => herb.id,
+        },
+        name: {
             type: GraphQLString,
-            resolve: (herb) => herb.available,
+            resolve: (herb) => herb.name,
         },
         description: {
             type: GraphQLString,
@@ -39,14 +43,6 @@ export default new GraphQLObjectType({
             type: new GraphQLList(GraphQLString),
             resolve: (herb) => herb.flavors,
         },
-        id: {
-            type: GraphQLID,
-            resolve: (herb) => herb.id,
-        },
-        name: {
-            type: GraphQLString,
-            resolve: (herb) => herb.name,
-        },
         tags: {
             type: new GraphQLList(GraphQLString),
             resolve: (herb) => herb.tags,
@@ -58,6 +54,14 @@ export default new GraphQLObjectType({
         stockStatus: {
             type: HerbStockStatus,
             resolve: (herb) => herb.stockStatus,
+        },
+        available: {
+            type: GraphQLString,
+            resolve: (herb) => herb.available,
+        },
+        currentStage: {
+            type: GraphQLString,
+            resolve: (herb) => herb.currentStage,
         },
     }),
 });

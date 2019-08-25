@@ -4,7 +4,7 @@ import {
 } from 'graphql';
 import graphqlHTTP from 'express-graphql';
 import {
-    HerbQuery,
+    HerbPaginationQuery,
 } from 'mapper-gql/queries';
 import {
     HerbMutation,
@@ -15,7 +15,7 @@ const RootQuery = new GraphQLObjectType({
     description: 'This is the root query which' +
     ' holds all possible READ entrypoints for the GraphQL API',
     fields: () => ({
-        herb: HerbQuery,
+        herbs: HerbPaginationQuery,
     }),
 });
 
