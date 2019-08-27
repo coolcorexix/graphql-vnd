@@ -3,7 +3,10 @@ import {
     GraphQLString,
     GraphQLID,
     GraphQLList,
+    GraphQLInt,
     GraphQLEnumType,
+    GraphQLInterfaceType,
+    GraphQLUnionType,
 } from 'graphql';
 
 import EffectType from './EffectType';
@@ -20,48 +23,103 @@ export const HerbStockStatus = new GraphQLEnumType({
     },
 });
 
+export const IHerb = new GraphQLInterfaceType({
+    name: 'IHerb',
+    fields: () => ({
+        id: {
+            type: GraphQLID,
+        },
+        name: {
+            type: GraphQLString,
+        },
+    }),
+    resolveType: (herb) => {
+        if (herb.currentStage) {
+            return HerbPreOrder;
+        };
+        if (herb.available) {
+            return HerbInStock;
+        }
+    },
+});
+
+export const HerbInStock = new GraphQLObjectType({
+    name: 'HerbInStock',
+    interfaces: [IHerb],
+    fields: () => ({
+        id: {
+            type: GraphQLID,
+        },
+        name: {
+            type: GraphQLString,
+        },
+        available: {
+            type: GraphQLInt,
+        },
+    }),
+});
+
+export const HerbPreOrder = new GraphQLObjectType({
+    name: 'HerbPreOrder',
+    interfaces: [IHerb],
+    fields: () => ({
+        id: {
+            type: GraphQLID,
+        },
+        name: {
+            type: GraphQLString,
+        },
+        currentStage: {
+            type: GraphQLString,
+        },
+    }),
+});
+
+export const UHerb = new GraphQLUnionType({
+    name: 'UHerb',
+    types: [HerbPreOrder, HerbInStock],
+    resolveType: (herb) => {
+        if (herb.currentStage) {
+            return HerbPreOrder;
+        };
+        if (herb.available) {
+            return HerbInStock;
+        }
+    },
+});
+
 export default new GraphQLObjectType({
     name: 'Herb',
     fields: () => ({
         id: {
             type: GraphQLID,
-            resolve: (herb) => herb.id,
         },
         name: {
             type: GraphQLString,
-            resolve: (herb) => herb.name,
         },
         description: {
             type: GraphQLString,
-            resolve: (herb) => herb.description,
         },
         effects: {
             type: new GraphQLList(EffectType),
-            resolve: (herb) => herb.effects,
         },
         flavors: {
             type: new GraphQLList(GraphQLString),
-            resolve: (herb) => herb.flavors,
         },
         tags: {
             type: new GraphQLList(GraphQLString),
-            resolve: (herb) => herb.tags,
         },
         thumbnailURL: {
             type: GraphQLString,
-            resolve: (herb) => herb.thumbnailURL,
         },
         stockStatus: {
             type: HerbStockStatus,
-            resolve: (herb) => herb.stockStatus,
         },
         available: {
-            type: GraphQLString,
-            resolve: (herb) => herb.available,
+            type: GraphQLInt,
         },
         currentStage: {
             type: GraphQLString,
-            resolve: (herb) => herb.currentStage,
         },
     }),
 });

@@ -21,7 +21,7 @@ export default {
             type: GraphQLID,
         },
     },
-    resolve: async (herb, args) => {
+    resolve: async (_, args) => {
         const {
             after,
             filters,
