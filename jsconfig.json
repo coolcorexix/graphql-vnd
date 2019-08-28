@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "baseUrl": ".",
+        "paths": {
+            "mapper-gql/*": ["src/api/graphql/*"],
+            "mapper-api/*": ["src/api/*"],
+            "~/*": ["src/*"]
+        },
+    },
+    "exclude": ["node_modules", "dist"]
+}
