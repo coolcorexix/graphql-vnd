@@ -1,6 +1,6 @@
 import {createModel} from '~/utils/mongoDb';
 
-export default createModel('Herb', {
+export default createModel('herbs', {
     name: String,
     rating: {
         type: Number,

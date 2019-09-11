@@ -4,3 +4,8 @@ export {
 export {
     default as HerbQuery,
 } from './HerbQuery';
+
+
+export {
+    default as PostQuery,
+} from './PostQuery';

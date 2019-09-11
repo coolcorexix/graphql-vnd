@@ -3,9 +3,13 @@ export {
     HerbStockStatus,
     HerbInStock,
     HerbPreOrder,
-    UHerb,
     IHerb,
 } from './HerbType';
+export {
+    PostUnionType,
+} from './PostType';
 export {default as EffectType} from './EffectType';
 export {default as ResponseType} from './ResponseType';
 export {default as PageInfoType} from './PageInfoType';
+export {default as SimpleUserType} from './SimpleUserType';
+

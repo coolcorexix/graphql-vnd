@@ -17,7 +17,7 @@ export default new GraphQLInputObjectType({
             type: new GraphQLList(GraphQLString),
         },
         effects: {
-            type: EffectInputType,
+            type: new GraphQLList(EffectInputType),
         },
         description: {
             type: GraphQLString,

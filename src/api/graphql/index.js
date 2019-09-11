@@ -6,9 +6,11 @@ import graphqlHTTP from 'express-graphql';
 import {
     HerbPaginationQuery,
     HerbQuery,
+    PostQuery,
 } from 'mapper-gql/queries';
 import {
     HerbMutation,
+    PostMutation,
 } from 'mapper-gql/mutations';
 import {
     HerbInStock,
@@ -22,23 +24,17 @@ const RootQuery = new GraphQLObjectType({
     fields: () => ({
         herbs: HerbPaginationQuery,
         herb: HerbQuery,
+        post: PostQuery,
     }),
 });
-
-const {
-    createHerb,
-    deleteHerb,
-    updateHerb,
-} = HerbMutation;
 
 const RootMutation = new GraphQLObjectType({
     name: 'rootMutation',
     description: 'This is the root query which' +
     ' holds all possible WRITE entrypoints for the GraphQL API',
     fields: () => ({
-        createHerb,
-        deleteHerb,
-        updateHerb,
+        ...HerbMutation,
+        ...PostMutation,
     }),
 });
 

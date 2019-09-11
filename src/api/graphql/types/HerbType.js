@@ -6,7 +6,6 @@ import {
     GraphQLInt,
     GraphQLEnumType,
     GraphQLInterfaceType,
-    GraphQLUnionType,
 } from 'graphql';
 
 import EffectType from './EffectType';
@@ -73,19 +72,6 @@ export const HerbPreOrder = new GraphQLObjectType({
             type: GraphQLString,
         },
     }),
-});
-
-export const UHerb = new GraphQLUnionType({
-    name: 'UHerb',
-    types: [HerbPreOrder, HerbInStock],
-    resolveType: (herb) => {
-        if (herb.currentStage) {
-            return HerbPreOrder;
-        };
-        if (herb.available) {
-            return HerbInStock;
-        }
-    },
 });
 
 export default new GraphQLObjectType({

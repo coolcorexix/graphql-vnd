@@ -37,14 +37,14 @@ const InputType = new GraphQLInputObjectType({
 const PayloadType = new GraphQLObjectType({
     name: 'CreateHerbPayloadType',
     fields: () => ({
-        herb: {
+        item: {
             type: HerbType,
             resolve: (payload) => payload.herb,
         },
         response: {
             type: ResponseType,
             resolve: (payload) => {
-                if (payload.herb) {
+                if (payload.item) {
                     return ({
                         status: 203,
                         message: '',
