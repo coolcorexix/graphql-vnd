@@ -5,6 +5,7 @@ import {
 import graphqlHTTP from 'express-graphql';
 import {
     PostQuery,
+    PostPaginationQuery,
 } from 'mapper-gql/queries/index';
 import {
     PostMutation,
@@ -20,6 +21,7 @@ const RootQuery = new GraphQLObjectType({
     ' holds all possible READ entrypoints for the GraphQL API',
     fields: () => ({
         post: PostQuery,
+        posts: PostPaginationQuery,
     }),
 });
 

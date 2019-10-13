@@ -24,7 +24,7 @@ export function generatePaginationArguments(filterType) {
         after: {
             type: GraphQLID,
         },
-        first: {
+        limit: {
             type: GraphQLInt,
         },
     };
