@@ -16,6 +16,7 @@ export default new GraphQLInputObjectType(
                 comments,
                 ...inputValues
             } = BasicPostFields;
+            if (comments) {};
             return ({
                 ...inputValues,
                 author: {
