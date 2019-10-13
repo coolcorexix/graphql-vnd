@@ -15,6 +15,8 @@ import {
 import {
     HerbInStock,
     HerbPreOrder,
+    BasicPostType,
+    EmbeddedPostType,
 } from 'mapper-gql/types';
 
 const RootQuery = new GraphQLObjectType({
@@ -39,7 +41,7 @@ const RootMutation = new GraphQLObjectType({
 });
 
 const schema = new GraphQLSchema({
-    types: [HerbInStock, HerbPreOrder],
+    types: [HerbInStock, HerbPreOrder, BasicPostType, EmbeddedPostType],
     query: RootQuery,
     mutation: RootMutation,
 });

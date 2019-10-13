@@ -1,6 +1,8 @@
 import {generateCreatePayloadType} from '~/utils/graphql';
 import {simpleCreateDocument} from '~/utils/mongoDb';
-import {PostUnionType} from 'mapper-gql/types';
+import {
+    PostInterfaceType,
+} from 'mapper-gql/types';
 import {PostInputType} from 'mapper-gql/inputTypes';
 
 import {PostModel} from 'mapper-api/models';
@@ -8,7 +10,7 @@ import {PostModel} from 'mapper-api/models';
 export default {
     type: generateCreatePayloadType({
         operationName: 'CreatePost',
-        itemType: PostUnionType,
+        itemType: PostInterfaceType,
     }),
     args: {
         input: {

@@ -6,7 +6,9 @@ export {
     IHerb,
 } from './HerbType';
 export {
-    PostUnionType,
+    BasicPostType,
+    EmbeddedPostType,
+    PostInterfaceType,
 } from './PostType';
 export {default as EffectType} from './EffectType';
 export {default as ResponseType} from './ResponseType';

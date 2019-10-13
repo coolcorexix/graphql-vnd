@@ -1,9 +1,9 @@
 import {GraphQLID} from 'graphql';
-import {PostUnionType} from 'mapper-gql/types';
+import {PostInterfaceType} from 'mapper-gql/types';
 import {PostModel} from 'mapper-api/models';
 
 export default {
-    type: PostUnionType,
+    type: PostInterfaceType,
     args: {
         _id: {
             type: GraphQLID,

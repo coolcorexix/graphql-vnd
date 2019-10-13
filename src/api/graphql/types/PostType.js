@@ -1,10 +1,10 @@
 import {
     GraphQLObjectType,
-    GraphQLUnionType,
     GraphQLEnumType,
     GraphQLList,
     GraphQLString,
     GraphQLID,
+    GraphQLInterfaceType,
 } from 'graphql';
 
 import UserType from './SimpleUserType';
@@ -56,8 +56,22 @@ export const BasicPostFields = {
     },
 };
 
+export const PostInterfaceType = new GraphQLInterfaceType({
+    name: 'PostInterfaceType',
+    fields: () => ({
+        ...BasicPostFields,
+    }),
+    resolveType: (post) => {
+        if (post.servicePlatform) {
+            return EmbeddedPostType;
+        }
+        return BasicPostType;
+    },
+});
+
 export const BasicPostType = new GraphQLObjectType({
     name: 'BasicPost',
+    interfaces: [PostInterfaceType],
     fields: () => ({
         ...BasicPostFields,
     }),
@@ -65,6 +79,7 @@ export const BasicPostType = new GraphQLObjectType({
 
 export const EmbeddedPostType = new GraphQLObjectType({
     name: 'EmbeddedPost',
+    interfaces: [PostInterfaceType],
     fields: () => ({
         ...BasicPostFields,
         servicePlatform: {
@@ -73,13 +88,15 @@ export const EmbeddedPostType = new GraphQLObjectType({
     }),
 });
 
-export const PostUnionType = new GraphQLUnionType({
-    name: 'PostUnion',
-    types: [BasicPostType, EmbeddedPostType],
-    resolveType: (post) => {
-        if (!post.servicePlatform) {
-            return BasicPostType;
-        }
-        return EmbeddedPostType;
-    },
-});
+// TODO: For the purpose of reference
+
+// export const PostUnionType = new GraphQLUnionType({
+//     name: 'PostUnion',
+//     types: [BasicPostType, EmbeddedPostType],
+//     resolveType: (post) => {
+//         if (!post.servicePlatform) {
+//             return BasicPostType;
+//         }
+//         return EmbeddedPostType;
+//     },
+// });
