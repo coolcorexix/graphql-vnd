@@ -51,15 +51,15 @@ export const BasicPostFields = {
     resourceURL: {
         type: GraphQLString,
     },
-    comments: {
-        type: new GraphQLList(CommentType),
-    },
 };
 
 export const PostInterfaceType = new GraphQLInterfaceType({
     name: 'PostInterfaceType',
     fields: () => ({
         ...BasicPostFields,
+        comments: {
+            type: new GraphQLList(CommentType),
+        },
     }),
     resolveType: (post) => {
         if (post.servicePlatform) {
@@ -74,6 +74,9 @@ export const BasicPostType = new GraphQLObjectType({
     interfaces: [PostInterfaceType],
     fields: () => ({
         ...BasicPostFields,
+        comments: {
+            type: new GraphQLList(CommentType),
+        },
     }),
 });
 
@@ -82,6 +85,9 @@ export const EmbeddedPostType = new GraphQLObjectType({
     interfaces: [PostInterfaceType],
     fields: () => ({
         ...BasicPostFields,
+        comments: {
+            type: new GraphQLList(CommentType),
+        },
         servicePlatform: {
             type: ServicePlatformEnumType,
         },
