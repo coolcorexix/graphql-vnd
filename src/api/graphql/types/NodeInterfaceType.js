@@ -5,7 +5,7 @@ import {
 
 export default new GraphQLInterfaceType({
     name: 'NodeInterface',
-    fields: () =>  ({
+    fields: () => ({
         id: {
             type: GraphQLID,
         },
