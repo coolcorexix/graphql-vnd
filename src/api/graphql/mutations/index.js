@@ -1,1 +1,3 @@
-export {default as PostMutation} from './PostMutation';
+export {
+    default as PostMutation,
+} from './PostMutation/index';

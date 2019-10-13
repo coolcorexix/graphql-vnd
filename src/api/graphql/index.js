@@ -5,16 +5,14 @@ import {
 import graphqlHTTP from 'express-graphql';
 import {
     PostQuery,
-} from 'mapper-gql/queries';
-import Mutations from 'mapper-gql/mutations/index';
+} from 'mapper-gql/queries/index';
+import {
+    PostMutation,
+} from 'mapper-gql/mutations/index';
 import {
     BasicPostType,
     EmbeddedPostType,
 } from 'mapper-gql/types';
-
-const {
-    PostMutation,
-} = Mutations;
 
 const RootQuery = new GraphQLObjectType({
     name: 'rootQuery',
