@@ -3,7 +3,7 @@ import {
     GraphQLList,
 } from 'graphql';
 
-import {PostModel} from '~/api/models';
+import {PostModel} from '~/api/models/index';
 
 import {generatePaginationArguments} from '~/utils/graphql';
 import {PostInterfaceType} from 'mapper-gql/types';
@@ -23,7 +23,8 @@ export default {
                 ...(!!after && {_id: {$lt: after}}),
                 ...filters,
             },
-            null, {
+            null,
+            {
                 ...(!!limit && {limit}),
                 sort: {
                     _id: -1,

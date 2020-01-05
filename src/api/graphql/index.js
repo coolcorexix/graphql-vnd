@@ -13,7 +13,7 @@ import {
 import {
     BasicPostType,
     EmbeddedPostType,
-} from 'mapper-gql/types';
+} from 'mapper-gql/types/index';
 
 const RootQuery = new GraphQLObjectType({
     name: 'rootQuery',
