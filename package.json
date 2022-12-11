@@ -21,7 +21,7 @@
   "dependencies": {
     "@playlyfe/gql": "^2.6.1",
     "eslint-import-resolver-alias": "^1.1.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-graphql": "^0.8.0",
     "graphql": "^14.4.1",
     "graphql-import": "^0.7.1",
